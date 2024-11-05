@@ -13,6 +13,10 @@ class Job extends Model {
 
     protected $fillable = ['title', 'salary',];
 
+    public function employer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Employer::class);
+    }
 
 }
 
