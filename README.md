@@ -15,6 +15,12 @@ php artisan tinker
 composer require barryvdh/laravel-debugbar --dev
 
 php artisan vendor:publish
+
+php artisan db:seed
+
+php artisan migrate:refresh --seed
+
+php artisan db:seed --class=JobSeeder
 ```
 
 
