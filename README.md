@@ -3,6 +3,24 @@
 
 [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
 
+```
+php artisan serve
+
+php artisan db:show
+
+artisan make:model Post -mf
+
+php artisan tinker
+
+composer require barryvdh/laravel-debugbar --dev
+
+php artisan vendor:publish
+```
+
+
+
+
+
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
