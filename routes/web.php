@@ -7,6 +7,7 @@ Route::get('/', function () {
     return view('home');
 });
 
+// Index: displays all jobs
 Route::get('/jobs', function ()  {
     //$jobs = Job::all();  // n+1 problem (lazy loading the employer relationship)
     //$jobs = Job::with('employer')->get(); // eager loading to reduce the number of queries
@@ -19,18 +20,20 @@ Route::get('/jobs', function ()  {
     return view('jobs.index', ['jobs' => $jobs]);   // 'jobs/index' === 'jobs.index'
 });
 
+// Create: displays a form to create a new job
 Route::get('/jobs/create', function () {
     return view('jobs.create');
 });
 
 
+// Show: displays a single job
 Route::get('/jobs/{id}', function ($id)  {
 
     $job = Job::find($id);
     return view('jobs.show', ['job' => $job]);
 });
 
-
+// Store: persists the new job to the database
 Route::post('/jobs', function () {
     //dd(request()->all());
 
@@ -48,7 +51,44 @@ Route::post('/jobs', function () {
     return redirect('/jobs');
 });
 
+// Edit: displays a form to edit a job
+Route::get('/jobs/{id}/edit', function ($id)  {
 
+    $job = Job::find($id);
+    return view('jobs.edit', ['job' => $job]);
+});
+
+// Update:
+Route::patch('/jobs/{id}', function ($id)  {
+    request()->validate([
+        'title' => ['required', "min:3"],
+        'salary' => ['required'],
+    ]);
+
+    // authorize (On hold... )
+
+    // update the job
+    $job = Job::findOrFail($id);
+
+//    $job->title = request('title');
+//    $job->salary = request('salary');
+//    $job->save();
+    $job->update([
+        'title' => request('title'),
+        'salary' => request('salary'),
+    ]);
+
+    return redirect('/jobs/' . $job->id);
+
+});
+
+// Delete
+Route::delete('/jobs/{id}', function ($id)  {
+    // authorize (On hold... )
+
+    Job::findOrFail($id)->delete();
+    return redirect('/jobs');
+});
 
 Route::get('/contact', function () {
     return view('contact');
