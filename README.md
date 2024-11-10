@@ -21,6 +21,12 @@ php artisan db:seed
 php artisan migrate:refresh --seed
 
 php artisan db:seed --class=JobSeeder
+
+php artisan make:controller RegisteredUserController
+php artisan make:controller SessionController
+
+php artisan make:policy
+
 ```
 
 
