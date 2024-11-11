@@ -25,7 +25,19 @@ php artisan db:seed --class=JobSeeder
 php artisan make:controller RegisteredUserController
 php artisan make:controller SessionController
 
+
 php artisan make:policy
+
+
+
+php artisan make:mail 
+
+
+
+php artisan make:job  
+
+php artisan queue:work
+
 
 ```
 
